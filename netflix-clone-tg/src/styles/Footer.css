@@ -1,0 +1,20 @@
+.main-footer {
+  background: black;
+  color: gray;
+  padding-top: 1em;
+  font-size: 12px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+li {
+  color: gray;
+  list-style: none;
+}
