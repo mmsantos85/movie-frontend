@@ -1,4 +1,10 @@
 import React from "react";
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiOutlineTwitter,
+  AiFillYoutube,
+} from "react-icons/ai";
 import "../styles/Footer.css";
 
 function Footer() {
@@ -8,8 +14,15 @@ function Footer() {
         <div className="row">
           {/* column 1 */}
           <div className="col">
-            <h4>Social media icons</h4>
-            <ul className="list-unstyled">
+            <div className="col__icons">
+              <h4>
+                <AiFillFacebook />
+                <AiFillInstagram />
+                <AiOutlineTwitter />
+                <AiFillYoutube />
+              </h4>
+            </div>
+            <ul className="list-unstyled-no-margin">
               <li>Audio en ondertiteling</li>
               <li>Mediacenter</li>
               <li>Privacy</li>
