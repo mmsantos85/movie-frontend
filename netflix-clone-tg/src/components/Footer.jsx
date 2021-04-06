@@ -22,7 +22,7 @@ function Footer() {
                 <AiFillYoutube />
               </h4>
             </div>
-            <ul className="list-unstyled1">
+            <ul className="list-unstyled-no-margin">
               <li>Audio en ondertiteling</li>
               <li>Mediacenter</li>
               <li>Privacy</li>
