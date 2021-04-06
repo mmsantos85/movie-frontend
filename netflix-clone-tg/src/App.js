@@ -1,8 +1,8 @@
 
 import React from 'react';
 
-import HomeScreen from './HomeScreen';
-import Nav from './Nav';
+import HomeScreen from './components/HomeScreen';
+import Nav from './components/Nav';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -14,15 +14,16 @@ function App() {
     <div className="App">
 
       <Nav />
+   
      
 
       <div className="content-wrap">
         <Router>
-          {/* Nav */}
+          <Nav />
           <Switch>
-            {/* <Route path="/">
-             <HomeScreen /> 
-          </Route> */}
+            <Route path="/">
+            <HomeScreen />
+          </Route>
           </Switch>
         </Router>
       </div>
