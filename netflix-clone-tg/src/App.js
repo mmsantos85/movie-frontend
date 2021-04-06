@@ -1,12 +1,7 @@
 import React from "react";
 
-
-import React from 'react';
-
-import HomeScreen from './components/HomeScreen';
-import Nav from './components/Nav';
-
-
+import HomeScreen from "./components/HomeScreen";
+import Nav from "./components/Nav";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer";
