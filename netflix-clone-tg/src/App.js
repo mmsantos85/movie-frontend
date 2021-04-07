@@ -1,11 +1,14 @@
 import React from "react";
 
 import HomeScreen from "./components/HomeScreen";
+import MoviePage from "./pages/MoviePage";
+
 import Nav from "./components/Nav";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import "./App.css";
+import DiscoverPage from "./pages/DiscoverPage";
 
 function App() {
   return (
@@ -14,8 +17,14 @@ function App() {
         <Router>
           <Nav />
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <HomeScreen />
+            </Route>
+            <Route path="/movies">
+              <MoviePage />
+            </Route>
+            <Route path="/discover">
+              <DiscoverPage />
             </Route>
           </Switch>
         </Router>
