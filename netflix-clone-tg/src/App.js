@@ -1,22 +1,38 @@
 
+import React from "react";
+
+import HomeScreen from "./components/HomeScreen";
+import MoviePage from "./pages/MoviePage";
+import DiscoverPage from "./pages/DiscoverPage";
+
+import Nav from "./components/Nav";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Footer from "./components/Footer";
+
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content-wrap">
+        <Router>
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <HomeScreen />
+            </Route>
+            <Route path="/film">
+              <MoviePage />
+            </Route>
+            <Route path="/discover">
+              <DiscoverPage />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+      <Footer />
     </div>
   );
 }

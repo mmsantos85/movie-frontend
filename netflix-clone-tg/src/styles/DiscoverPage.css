@@ -1,0 +1,9 @@
+.discover {
+  color: white;
+  /* height: 100vh; */
+  margin-left: 20px;
+}
+
+.discover__body {
+  padding-top: 70px;
+}
