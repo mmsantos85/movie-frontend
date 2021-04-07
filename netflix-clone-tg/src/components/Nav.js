@@ -3,7 +3,7 @@ import "../styles/Nav.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
-import {IoMdNotifications} from "react-icons/io";
+import { IoMdNotifications } from "react-icons/io";
 
 function Nav() {
   const [show, handleShow] = useState(false);
@@ -31,7 +31,7 @@ function Nav() {
           src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
           alt=""
         />
-        <ul class="nav__link">
+        <ul className="nav__link">
           <li>
             {" "}
             <Link to="/">Home</Link>
@@ -46,9 +46,13 @@ function Nav() {
           </li>
         </ul>
         <div className="nav__contents__icons">
-           <ul className="nav__contents__ul">
-          <li><GoSearch className="nav__contents__icon" /></li>
-          <li><IoMdNotifications className="nav__contents__icon" /></li>
+          <ul className="nav__contents__ul">
+            <li>
+              <GoSearch className="nav__contents__icon" />
+            </li>
+            <li>
+              <IoMdNotifications className="nav__contents__icon" />
+            </li>
           </ul>
         </div>
         <img
