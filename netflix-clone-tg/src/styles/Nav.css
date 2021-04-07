@@ -9,8 +9,6 @@
     /* Animations */
     transition-timing-function: ease-in;
     transition: all 0.5s;
-
-
 }
 
 .nav__contents {
@@ -36,5 +34,20 @@
     position: fixed;
     right: 20px;
     width: 30px;
+    cursor: pointer;
+}
+
+.nav__link {
+    position: fixed;
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    left: 6rem;
+    top: 1.4rem;
+}
+
+.nav__link li {
+    padding-left: 4rem;
+    color: white;
     cursor: pointer;
 }
