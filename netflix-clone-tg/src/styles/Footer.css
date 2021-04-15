@@ -6,24 +6,42 @@
   position: relative;
   bottom: 0;
   width: 100%;
+  padding-bottom: 1em;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  margin-left: 20%;
 }
 
 .col__icons {
   font-size: 18px;
-  padding: 5px 5px 5px 0px;
 }
 
-.list-unstyled {
-  margin-top: 24%;
+.col {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.col1 {
+  padding-right: 50px;
 }
 
 li {
   color: gray;
+  cursor: pointer;
   list-style: none;
+}
+
+.container__icons {
+  display: flex;
+  margin-left: 20%;
+}
+
+.container__h1 {
+  font-size: 30px;
+}
+
+.container__h1 > svg {
+  margin-right: 10px;
+  cursor: pointer;
 }

@@ -11,18 +11,19 @@ function Footer() {
   return (
     <div className="main-footer">
       <div className="container">
+        <div className="container__icons">
+          <h1 className="container__h1">
+            <AiFillFacebook />
+            <AiFillInstagram />
+            <AiOutlineTwitter />
+            <AiFillYoutube />
+          </h1>
+        </div>
         <div className="row">
           {/* column 1 */}
-          <div className="col">
-            <div className="col__icons">
-              <h4>
-                <AiFillFacebook />
-                <AiFillInstagram />
-                <AiOutlineTwitter />
-                <AiFillYoutube />
-              </h4>
-            </div>
-            <ul className="list-unstyled-no-margin">
+          <div className="col1">
+            <div className="col__icons"></div>
+            <ul className="list-unstyled">
               <li>Audio en ondertiteling</li>
               <li>Mediacenter</li>
               <li>Privacy</li>
@@ -49,8 +50,8 @@ function Footer() {
           <div className="col">
             <ul className="list-unstyled">
               <li>Cadeaubonnen</li>
-              <li>gebruiksvoorwaarden</li>
-              <li>bedrijfsgegevens</li>
+              <li>Gebruiksvoorwaarden</li>
+              <li>Bedrijfsgegevens</li>
             </ul>
           </div>
         </div>
