@@ -8,11 +8,14 @@
   width: 100%;
   padding-bottom: 1em;
   &__container {
-    &__h1 > svg {
+    &__h1 > a > svg {
       font-size: 30px;
       cursor: pointer;
       margin-right: 10px;
+      text-decoration: none;
+      color: lightgray;
     }
+
     &__icons {
       display: flex;
       margin-left: 20%;

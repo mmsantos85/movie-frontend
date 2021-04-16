@@ -5,6 +5,7 @@ import {
   AiOutlineTwitter,
   AiFillYoutube,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import "../style.css";
 
 function Footer() {
@@ -13,10 +14,35 @@ function Footer() {
       <div className="footer__container">
         <div className="footer__container__icons">
           <h1 className="footer__container__h1">
-            <AiFillFacebook />
-            <AiFillInstagram />
-            <AiOutlineTwitter />
-            <AiFillYoutube />
+            <a
+              href="https://www.facebook.com/NetflixNederland"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillFacebook />
+            </a>
+            <a
+              href="https://www.instagram.com/NetflixNL/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillInstagram />
+            </a>
+
+            <a
+              href="https://twitter.com/NetflixNL"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiOutlineTwitter />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCLpLPhObMNbVBdSGf8XDIxQ"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillYoutube />
+            </a>
           </h1>
         </div>
         <div className="footer__container__row">
