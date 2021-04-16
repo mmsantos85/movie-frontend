@@ -57,6 +57,7 @@
   left: 6rem;
   top: 2.5%;
   text-decoration: none;
+  list-style: none;
 }
 
 .nav__link a {
@@ -74,14 +75,13 @@
 }
 
 .nav__contents__ul {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-right: 5%;
-    align-items: center;
-    margin-right: 85px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-right: 5%;
+  align-items: center;
+  margin-right: 85px;
 }
-
 
 .search-box__icon {
   cursor: pointer;

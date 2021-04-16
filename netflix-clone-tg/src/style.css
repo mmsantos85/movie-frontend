@@ -103,6 +103,7 @@
   color: gray;
   cursor: pointer;
   list-style: none;
+  font-size: 12px;
 }
 
 .footer__container__row .col {
@@ -114,5 +115,6 @@
   color: gray;
   cursor: pointer;
   list-style: none;
+  font-size: 12px;
 }
 /*# sourceMappingURL=style.css.map */
