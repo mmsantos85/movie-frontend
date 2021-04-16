@@ -37,10 +37,16 @@
 
 .nav__avatar {
   position: fixed;
-  right: 20px;
+  right: 55px;
   width: 30px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.nav__arrow {
+  position: fixed;
+  right: 25px;
+  font-size: 20px;
 }
 
 .nav__link {
@@ -73,12 +79,13 @@
     flex-direction: row;
     margin-right: 5%;
     align-items: center;
+    margin-right: 85px;
     /* border: 1px solid black; */
 }
 
 .search-box__icon {
   cursor: pointer;
-  width: 30px;
+  width: 40px;
   font-size: 20px;
 }
 
