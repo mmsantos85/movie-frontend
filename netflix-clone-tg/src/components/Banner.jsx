@@ -8,6 +8,8 @@ import requests from "../Requests";
 const Banner = () => {
   const [movie, setMovie] = useState([]);
 
+
+  // tijdelijke API call 
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchComedyMovies);
