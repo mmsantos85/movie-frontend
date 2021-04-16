@@ -75,10 +75,12 @@
   padding-bottom: 1em;
 }
 
-.footer__container__h1 > svg {
+.footer__container__h1 > a > svg {
   font-size: 30px;
   cursor: pointer;
   margin-right: 10px;
+  text-decoration: none;
+  color: lightgray;
 }
 
 .footer__container__icons {
