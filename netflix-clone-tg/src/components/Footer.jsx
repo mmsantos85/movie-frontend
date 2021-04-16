@@ -9,17 +9,17 @@ import "../styles/Footer.css";
 
 function Footer() {
   return (
-    <div className="main-footer">
-      <div className="container">
-        <div className="container__icons">
-          <h1 className="container__h1">
+    <div className="footer">
+      <div className="footer__container">
+        <div className="footer__container__icons">
+          <h1 className="footer__container__h1">
             <AiFillFacebook />
             <AiFillInstagram />
             <AiOutlineTwitter />
             <AiFillYoutube />
           </h1>
         </div>
-        <div className="row">
+        <div className="footer__container__row">
           {/* column 1 */}
           <div className="col1">
             <div className="col__icons"></div>
