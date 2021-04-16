@@ -50,13 +50,10 @@ function Nav() {
             {" "}
             <Link to="/">Home</Link>
           </li>
+
           <li>
             {" "}
-            <Link to="/discover">Discover</Link>
-          </li>
-          <li>
-            {" "}
-            <Link to="/film">Film</Link>
+            <Link to="/film">Films</Link>
           </li>
         </ul>
         <div className="nav__contents__icons">
