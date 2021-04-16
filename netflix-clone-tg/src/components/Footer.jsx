@@ -5,7 +5,7 @@ import {
   AiOutlineTwitter,
   AiFillYoutube,
 } from "react-icons/ai";
-import "../styles/Footer.css";
+import "../style.css";
 
 function Footer() {
   return (
@@ -22,7 +22,6 @@ function Footer() {
         <div className="footer__container__row">
           {/* column 1 */}
           <div className="col1">
-            <div className="col__icons"></div>
             <ul className="list-unstyled">
               <li>Audio en ondertiteling</li>
               <li>Mediacenter</li>
