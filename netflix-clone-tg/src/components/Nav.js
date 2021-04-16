@@ -23,18 +23,7 @@ function Nav() {
     return () => window.removeEventListener("scroll", transitionNavBar);
   }, []);
 
-  // SearchBox
-  // const searchIcon = document.getElementsByClassName("search-box__icon")[0];
-  // const searchBox = document.getElementsByClassName("search-box")[0];
-
-  // searchIcon.addEventListener("click", activateSearch);
-
   const [active, setActive] = useState(false);
-  console.log(active);
-
-  function activateSearch() {
-    // searchBox.classList.toggle("active");
-  }
 
   return (
     <div className={`nav ${show && "nav__black"}`}>
