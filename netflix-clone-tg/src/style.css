@@ -63,4 +63,56 @@
   background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(rgba(37, 37, 37, 0.726)), to(#111));
   background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.726), #111);
 }
+
+.footer {
+  background: black;
+  color: gray;
+  padding-top: 1em;
+  font-size: 12px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 1em;
+}
+
+.footer__container__h1 > svg {
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.footer__container__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 20%;
+}
+
+.footer__container__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 20%;
+}
+
+.footer__container__row .col1 {
+  padding-right: 50px;
+}
+
+.footer__container__row .col1 .list-unstyled > li {
+  color: gray;
+  cursor: pointer;
+  list-style: none;
+}
+
+.footer__container__row .col {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.footer__container__row .col .list-unstyled > li {
+  color: gray;
+  cursor: pointer;
+  list-style: none;
+}
 /*# sourceMappingURL=style.css.map */
