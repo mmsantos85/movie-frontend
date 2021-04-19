@@ -36,6 +36,9 @@
       text-decoration: none;
       list-style-type: none;
     }
+    &__links > a {
+      list-style-type: none;
+    }
     &__links > li > a {
       padding-left: 4rem;
       color: white;
