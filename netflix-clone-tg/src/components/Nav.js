@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import { IoMdNotifications, IoMdArrowDropdown } from "react-icons/io";
 
-
 // Nav On Scroll
 function Nav() {
   const [show, handleShow] = useState(false);
@@ -27,7 +26,7 @@ function Nav() {
   const [active, setActive] = useState(false);
 
   return (
-    <div className="nav">
+    <div className={`nav ${show && "nav__black"}`}>
       <div className="nav__contents">
         <img
           onClick={() => history.push("/")}

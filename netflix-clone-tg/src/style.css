@@ -191,13 +191,19 @@
   left: 6rem;
   top: 2.5%;
   text-decoration: none;
+  list-style-type: none;
 }
 
 .nav__contents__links > a {
+  list-style-type: none;
+}
+
+.nav__contents__links > li > a {
   padding-left: 4rem;
   color: white;
   cursor: pointer;
   text-decoration: none;
+  list-style-type: none;
 }
 
 .nav__contents__icons {
@@ -226,6 +232,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-right: 85px;
+  list-style-type: none;
 }
 
 .nav__contents__ul .search-box {
@@ -251,6 +258,7 @@
   color: white;
   padding: 7px 12px;
   margin-right: 10px;
+  font-size: 14px;
 }
 
 .nav__contents__ul .search-box__icon {
@@ -271,5 +279,9 @@
   position: fixed;
   right: 25px;
   font-size: 20px;
+}
+
+.nav__black {
+  background: #111;
 }
 /*# sourceMappingURL=style.css.map */
