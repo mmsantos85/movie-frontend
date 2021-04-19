@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Nav.css";
+import "../style.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import { IoMdNotifications, IoMdArrowDropdown } from "react-icons/io";
+
 
 // Nav On Scroll
 function Nav() {
@@ -26,15 +27,15 @@ function Nav() {
   const [active, setActive] = useState(false);
 
   return (
-    <div className={`nav ${show && "nav__black"}`}>
+    <div className="nav">
       <div className="nav__contents">
         <img
           onClick={() => history.push("/")}
-          className="nav__logo"
+          className="nav__contents__logo"
           src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
           alt=""
         />
-        <ul className="nav__link">
+        <ul className="nav__contents__links">
           <li>
             {" "}
             <Link to="/">Home</Link>
