@@ -19,6 +19,8 @@ const Banner = () => {
     fetchData();
   }, []);
 
+  console.log(movie);
+
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
   }
@@ -42,14 +44,18 @@ const Banner = () => {
         <h1 className="banner__contents__description">{truncate(`${movie.overview}`, 150)}</h1>
       </div>
       <div className="banner--fadeBottom" /> */}
-      
-      
-        {active ? (<div className='player-wrapper'><ReactPlayer
+        {active ? (<div className='player-wrapper'>
+          <ReactPlayer
+          playing={true}
           className='react-player'
-          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+          url='https://www.youtube.com/watch?v=FUK2kdPsBws'
           width='100%'
           height='100%'
-        /></div>): <> <div className="banner__contents">
+        />
+        <button onClick={() => setActive(!active)} className='player__button'>x</button>
+        </div>): 
+        <> 
+        <div className="banner__contents">
         <h1 className="banner__contents__title">{movie.original_title}</h1>
        
         <div className="banner__contents__buttons">
@@ -58,10 +64,8 @@ const Banner = () => {
         </div>
         <h1 className="banner__contents__description">{truncate(`${movie.overview}`, 150)}</h1>
       </div>
-      <div className="banner--fadeBottom" /> </>}
-        
-      
-
+      <div className="banner--fadeBottom" /> 
+      </>}
     </header>
     
   );
