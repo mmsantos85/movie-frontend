@@ -42,6 +42,17 @@
       max-width: 360px;
       height: 80px;
     }
+    .player-wrapper {
+      position: relative;
+        /* Player ratio: 100 / (1280 / 720) */
+    }
+    
+    .react-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
   }
   .banner--fadeBottom {
     height: 70vh;
@@ -53,3 +64,4 @@
     );
   }
 }
+
