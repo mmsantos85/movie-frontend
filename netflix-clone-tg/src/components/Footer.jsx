@@ -5,7 +5,6 @@ import {
   AiOutlineTwitter,
   AiFillYoutube,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import "../style.css";
 
 function Footer() {
