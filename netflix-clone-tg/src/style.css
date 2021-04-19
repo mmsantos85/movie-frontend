@@ -58,6 +58,18 @@
   height: 80px;
 }
 
+.banner__contents .player-wrapper {
+  position: relative;
+  /* Player ratio: 100 / (1280 / 720) */
+}
+
+.banner__contents .react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .banner .banner--fadeBottom {
   height: 70vh;
   background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(rgba(37, 37, 37, 0.726)), to(#111));
