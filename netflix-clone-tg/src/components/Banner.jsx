@@ -13,7 +13,7 @@ const Banner = () => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchComedyMovies);
-      setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
+      setMovie(request.data.results[4]);
       return requests;
     }
     fetchData();
@@ -38,7 +38,7 @@ const Banner = () => {
           <ReactPlayer
           playing={true}
           className='react-player'
-          url='https://www.youtube.com/watch?v=FUK2kdPsBws'
+          url='https://www.youtube.com/watch?v=a-o8xbEcuSY'
           width='100%'
           height='100%'
         />
@@ -62,3 +62,5 @@ const Banner = () => {
 };
 
 export default Banner;
+
+// Math.floor(Math.random() * request.data.results.length - 1)
