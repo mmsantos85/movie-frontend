@@ -34,16 +34,6 @@ const Banner = () => {
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path || movie?.poster__path}")`,
       }}
     > 
-      {/* <div className="banner__contents">
-        <h1 className="banner__contents__title">{movie.original_title}</h1>
-       
-        <div className="banner__contents__buttons">
-          <button onClick={()=> setActive(true)} className="banner__button">Afspelen</button>
-          <button className="banner__button">Meer informatie</button>
-        </div>
-        <h1 className="banner__contents__description">{truncate(`${movie.overview}`, 150)}</h1>
-      </div>
-      <div className="banner--fadeBottom" /> */}
         {active ? (<div className='player-wrapper'>
           <ReactPlayer
           playing={true}

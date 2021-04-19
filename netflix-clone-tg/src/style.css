@@ -62,7 +62,6 @@
   position: relative;
   height: 100vh;
   width: 100%;
-  /* Player ratio: 100 / (1280 / 720) */
 }
 
 .banner .react-player {
