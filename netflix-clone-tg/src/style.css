@@ -58,16 +58,29 @@
   height: 80px;
 }
 
-.banner__contents .player-wrapper {
+.banner .player-wrapper {
   position: relative;
-  /* Player ratio: 100 / (1280 / 720) */
+  height: 100vh;
+  width: 100%;
 }
 
-.banner__contents .react-player {
+.banner .react-player {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.banner .player__button {
+  z-index: 5;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+  position: absolute;
+  outline: none;
+  border: none;
+  right: 5px;
+  top: 1px;
 }
 
 .banner .banner--fadeBottom {
