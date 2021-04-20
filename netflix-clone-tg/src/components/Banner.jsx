@@ -29,7 +29,7 @@ const Banner = () => {
 
   return (
     <header
-      className="banner background__black"
+      className="banner"
       style={{
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
