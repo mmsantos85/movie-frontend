@@ -15,7 +15,7 @@ const Banner = () => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchComedyMovies);
-      setMovie(request.data.results[4]);
+      setMovie(request.data.results[2]);
       return requests;
     }
     fetchData();
@@ -80,24 +80,25 @@ const Banner = () => {
       {details ? (
         <div className="pop-up">
           <ReactPlayer
-            playing={false}
+            playing={true}
+            muted={true}
             className="pop-up__react-player"
             url="https://www.youtube.com/watch?v=a-o8xbEcuSY"
             width="100%"
-            height="50%"
+            height="100%"
           />
+          <div className="pop-up__trailer"></div>
           <span className="pop-up__close">
             <AiFillCloseCircle onClick={() => setDetails(false)} />
           </span>
-          <h1 className="pop-up__title">{movie.original_title}</h1>
           <div className="pop-up__content">
-            <div className="pop-up__content__data">
-              <p className="pop-up__content__release">
-                <span className="average">cijfer {movie.vote_average}</span>
+            <h1 className="pop-up__content__title">{movie.original_title}</h1>
+            <div className="pop-up__content__description">
+              <p className="release">
+                <span className="average">Cijfer {movie.vote_average}</span>
                 {` ${movie.release_date}`}
               </p>
-            </div>
-            <div className="pop-up__content__icons">
+
               <img
                 src="https://cdn.worldvectorlogo.com/logos/kijkwijzer.svg"
                 alt=""
@@ -111,8 +112,13 @@ const Banner = () => {
                 alt=""
               />
             </div>
+            <div className="pop-up__content__container">
+              <div className="description">
+                <p>{movie.overview}</p>
+              </div>
+              <div className="genres">genre: Action</div>
+            </div>
           </div>
-          <p className="pop-up__description">{movie.overview}</p>
         </div>
       ) : (
         ''
