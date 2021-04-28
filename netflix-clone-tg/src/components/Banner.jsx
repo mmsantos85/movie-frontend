@@ -10,18 +10,30 @@ const Banner = () => {
   const [movie, setMovie] = useState([]);
   const [active, setActive] = useState(false);
   const [details, setDetails] = useState(false);
+  const [title, setTitle] = useState('');
+  const API_KEY = '00c655f5cf699862386184d892b7378f';
 
   // tijdelijke API call
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchComedyMovies);
-      setMovie(request.data.results[2]);
-      return requests;
+      const request = await axios.get(requests.fetchHorrorMovies);
+      setMovie(request.data.results[0]);
+      return request;
     }
     fetchData();
   }, []);
 
-  console.log(movie);
+  useEffect(() => {
+    async function fetchTitle() {
+      const movieTitle = await axios.get(
+        `http://webservice.fanart.tv/v3/movies/632357?api_key=${API_KEY}`
+      );
+      setTitle(movieTitle.data?.hdmovielogo);
+      return movieTitle;
+    }
+    fetchTitle();
+  }, []);
+  console.log(title);
 
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
@@ -43,7 +55,7 @@ const Banner = () => {
           <ReactPlayer
             playing={true}
             className="react-player"
-            url="https://www.youtube.com/watch?v=a-o8xbEcuSY"
+            url="https://www.youtube.com/watch?v=1Uog4AeVdIk"
             width="100%"
             height="100%"
           />
@@ -54,7 +66,8 @@ const Banner = () => {
       ) : (
         <>
           <div className="banner__contents">
-            <h1 className="banner__contents__title">{movie.original_title}</h1>
+            {/* <h1 className="banner__contents__title">{movie.original_title}</h1> */}
+            <img src={title[1]?.url} alt="" srcSet="" />
 
             <div className="banner__contents__buttons">
               <button
@@ -83,7 +96,7 @@ const Banner = () => {
             playing={true}
             muted={true}
             className="pop-up__react-player"
-            url="https://www.youtube.com/watch?v=a-o8xbEcuSY"
+            url="https://www.youtube.com/watch?v=1Uog4AeVdIk"
             width="100%"
             height="100%"
           />
@@ -92,7 +105,18 @@ const Banner = () => {
             <AiFillCloseCircle onClick={() => setDetails(false)} />
           </span>
           <div className="pop-up__content">
-            <h1 className="pop-up__content__title">{movie.original_title}</h1>
+            <img
+              className="pop-up__content__title"
+              src={title[1]?.url}
+              alt=""
+            />
+            <div className="pop-up__content__buttons">
+              <div className="button-container">
+                <button>Afspelen </button>
+                <p>MUTE</p>
+              </div>
+            </div>
+
             <div className="pop-up__content__description">
               <p className="release">
                 <span className="average">Cijfer {movie.vote_average}</span>
