@@ -13,10 +13,11 @@ import {
 } from 'react-icons/vsc';
 import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMovieId } from '../feature/userSlice';
+import { selectMovieId, setMovieIdRedux } from '../feature/userSlice';
 
 const Banner = () => {
   const dispatch = useDispatch();
+
   const API_KEY = '00c655f5cf699862386184d892b7378f';
 
   const [movie, setMovie] = useState([]);
@@ -35,11 +36,14 @@ const Banner = () => {
       const request = await axios.get('/Discover');
       setMovie(request.data?.results);
       setMovieId(request.data?.results[0]);
-      // dispatch({ id: 'hi' });
+      dispatch(setMovieIdRedux({ movieId: request.data?.results[0] }));
       return request;
     }
     fetchData();
   }, [dispatch]);
+
+  // const idnum = useSelector(selectMovieId);
+  // console.log(idnum.movieId.id);
 
   useEffect(() => {
     async function fetchGenre() {
@@ -67,8 +71,8 @@ const Banner = () => {
   }
 
   // console.log(movie);
-  // const movieNum = useSelector(selectMovieId);
-  // console.log(movieNum);
+
+  // console.log(idnum);
   return (
     <header
       className="banner"
