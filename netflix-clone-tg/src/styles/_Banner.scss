@@ -116,15 +116,20 @@
         position: absolute;
         max-width: 35%;
         top: 60%;
-        border: 2px green solid;
       }
-      .button-container {
-        border: red 2px solid;
+      &__buttons {
         display: flex;
         justify-content: space-between;
-        width: 50%;
-        button {
-          width: 20%;
+        position: absolute;
+        top: 85%;
+        width: 90%;
+        .button-container > button {
+          padding: 0.4rem 2.5rem;
+          border-radius: 5px;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          font-weight: 500;
         }
       }
 
@@ -156,31 +161,3 @@
     }
   }
 }
-
-// &__description {
-//   width: 70%;
-//   padding: 20px 0 0 15px;
-//   font-size: 17px;
-//   border: green 1px solid;
-// }
-// &__title {
-//   color: white;
-//   font-size: 48px;
-//   padding-left: 15px;
-// }
-// &__content {
-//   display: flex;
-//   align-items: center;
-//   padding: 10px 0 0 15px;
-//   &__release > .average {
-//     color: green;
-//     font-size: 15px;
-//     font-weight: bold;
-//   }
-//   &__icons > img {
-//     border-radius: 50%;
-//     width: 30px;
-//     height: 30px;
-//     margin-left: 5px;
-//   }
-// }
