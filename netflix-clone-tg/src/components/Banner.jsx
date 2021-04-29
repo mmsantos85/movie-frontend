@@ -12,9 +12,13 @@ import {
   VscMute,
 } from 'react-icons/vsc';
 import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMovieId } from '../feature/userSlice';
 
 const Banner = () => {
+  const dispatch = useDispatch();
   const API_KEY = '00c655f5cf699862386184d892b7378f';
+
   const [movie, setMovie] = useState([]);
   const [active, setActive] = useState(false);
   const [details, setDetails] = useState(false);
@@ -31,10 +35,11 @@ const Banner = () => {
       const request = await axios.get('/Discover');
       setMovie(request.data?.results);
       setMovieId(request.data?.results[0]);
+      // dispatch({ id: 'hi' });
       return request;
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     async function fetchGenre() {
@@ -45,13 +50,13 @@ const Banner = () => {
     }
     fetchGenre();
   }, []);
-  console.log(movieId.id);
+
   useEffect(() => {
     async function fetchTitle() {
       const movieTitle = await axios.get(
         `http://webservice.fanart.tv/v3/movies/460465?api_key=${API_KEY}`
       );
-      setTitle(movieTitle.data?.hdmovielogo[0]);
+      setTitle(movieTitle.data?.hdmovielogo[1]);
       return movieTitle;
     }
     fetchTitle();
@@ -61,6 +66,9 @@ const Banner = () => {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
   }
 
+  // console.log(movie);
+  // const movieNum = useSelector(selectMovieId);
+  // console.log(movieNum);
   return (
     <header
       className="banner"
@@ -150,8 +158,8 @@ const Banner = () => {
 
             <div className="pop-up__content__description">
               <p className="release">
-                <span className="average">Cijfer {movie.vote_average}</span>
-                {` ${movie.release_date}`}
+                <span className="average">Cijfer {movie[0].vote_average}</span>
+                {` ${movie[0].release_date}`}
               </p>
 
               <img
