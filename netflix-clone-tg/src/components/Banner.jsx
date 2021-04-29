@@ -3,21 +3,23 @@ import '../style.css';
 
 import axios from '../axios';
 import ReactPlayer from 'react-player/youtube';
-import requests from '../Requests';
+// import requests from '../Requests';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
 const Banner = () => {
+  const API_KEY = '00c655f5cf699862386184d892b7378f';
   const [movie, setMovie] = useState([]);
   const [active, setActive] = useState(false);
   const [details, setDetails] = useState(false);
   const [title, setTitle] = useState('');
-  const API_KEY = '00c655f5cf699862386184d892b7378f';
+  const [movieId, setMovieId] = useState('');
 
   // tijdelijke API call
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchHorrorMovies);
-      setMovie(request.data.results[0]);
+      const request = await axios.get('/Discover');
+      setMovie(request.data?.results);
+      setMovieId(request.data?.results[0]);
       return request;
     }
     fetchData();
@@ -26,14 +28,15 @@ const Banner = () => {
   useEffect(() => {
     async function fetchTitle() {
       const movieTitle = await axios.get(
-        `http://webservice.fanart.tv/v3/movies/632357?api_key=${API_KEY}`
+        `http://webservice.fanart.tv/v3/movies/460465?api_key=${API_KEY}`
       );
-      setTitle(movieTitle.data?.hdmovielogo);
+      setTitle(movieTitle.data?.hdmovielogo[0]);
       return movieTitle;
     }
     fetchTitle();
   }, []);
-  console.log(title);
+
+  console.log(movie);
 
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
@@ -46,7 +49,7 @@ const Banner = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${
-          movie?.backdrop_path || movie?.poster__path
+          movie[0]?.backdrop_path || movie[0]?.poster__path
         }")`,
       }}
     >
@@ -55,7 +58,7 @@ const Banner = () => {
           <ReactPlayer
             playing={true}
             className="react-player"
-            url="https://www.youtube.com/watch?v=1Uog4AeVdIk"
+            url="https://www.youtube.com/watch?v=lFDVL1e8WM4"
             width="100%"
             height="100%"
           />
@@ -67,7 +70,8 @@ const Banner = () => {
         <>
           <div className="banner__contents">
             {/* <h1 className="banner__contents__title">{movie.original_title}</h1> */}
-            <img src={title[1]?.url} alt="" srcSet="" />
+
+            <img src={title?.url} alt="" />
 
             <div className="banner__contents__buttons">
               <button
@@ -84,7 +88,7 @@ const Banner = () => {
               </button>
             </div>
             <h1 className="banner__contents__description">
-              {truncate(`${movie.overview}`, 150)}
+              {truncate(`${movie[0]?.overview}`, 150)}
             </h1>
           </div>
           <div className="banner--fadeBottom" />
@@ -96,7 +100,7 @@ const Banner = () => {
             playing={true}
             muted={true}
             className="pop-up__react-player"
-            url="https://www.youtube.com/watch?v=1Uog4AeVdIk"
+            url="https://www.youtube.com/watch?v=lFDVL1e8WM4"
             width="100%"
             height="100%"
           />
@@ -105,15 +109,13 @@ const Banner = () => {
             <AiFillCloseCircle onClick={() => setDetails(false)} />
           </span>
           <div className="pop-up__content">
-            <img
-              className="pop-up__content__title"
-              src={title[1]?.url}
-              alt=""
-            />
+            <img className="pop-up__content__title" src={title?.url} alt="" />
             <div className="pop-up__content__buttons">
               <div className="button-container">
-                <button>Afspelen </button>
-                <p>MUTE</p>
+                <button>Afspelen</button>
+              </div>
+              <div className="button-mute">
+                <button>MUTE</button>
               </div>
             </div>
 
@@ -138,7 +140,7 @@ const Banner = () => {
             </div>
             <div className="pop-up__content__container">
               <div className="description">
-                <p>{movie.overview}</p>
+                <p>{movie[0]?.overview}</p>
               </div>
               <div className="genres">genre: Action</div>
             </div>

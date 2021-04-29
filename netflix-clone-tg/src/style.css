@@ -135,22 +135,27 @@
   position: absolute;
   max-width: 35%;
   top: 60%;
-  border: 2px green solid;
 }
 
-.banner .pop-up__content .button-container {
-  border: red 2px solid;
+.banner .pop-up__content__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 50%;
+  position: absolute;
+  top: 85%;
+  width: 90%;
 }
 
-.banner .pop-up__content .button-container button {
-  width: 20%;
+.banner .pop-up__content__buttons .button-container > button {
+  padding: 0.4rem 2.5rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .banner .pop-up__content__description {
