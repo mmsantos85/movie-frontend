@@ -4,7 +4,14 @@ import '../style.css';
 import axios from '../axios';
 import ReactPlayer from 'react-player/youtube';
 // import requests from '../Requests';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCloseCircle, AiOutlineCheck } from 'react-icons/ai';
+import {
+  VscThumbsdown,
+  VscThumbsup,
+  VscUnmute,
+  VscMute,
+} from 'react-icons/vsc';
+import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs';
 
 const Banner = () => {
   const API_KEY = '00c655f5cf699862386184d892b7378f';
@@ -13,6 +20,10 @@ const Banner = () => {
   const [details, setDetails] = useState(false);
   const [title, setTitle] = useState('');
   const [movieId, setMovieId] = useState('');
+  const [genre, setGenre] = useState('');
+  const [company, setCompany] = useState('');
+  const [play, setPlay] = useState(true);
+  const [mute, setMute] = useState(true);
 
   // tijdelijke API call
   useEffect(() => {
@@ -26,6 +37,16 @@ const Banner = () => {
   }, []);
 
   useEffect(() => {
+    async function fetchGenre() {
+      const genre = await axios.get(`/Movie/460465`);
+      setGenre(genre.data?.genres);
+      setCompany(genre.data.production_companies[0].name);
+      return genre;
+    }
+    fetchGenre();
+  }, []);
+  console.log(movieId.id);
+  useEffect(() => {
     async function fetchTitle() {
       const movieTitle = await axios.get(
         `http://webservice.fanart.tv/v3/movies/460465?api_key=${API_KEY}`
@@ -35,8 +56,6 @@ const Banner = () => {
     }
     fetchTitle();
   }, []);
-
-  console.log(movie);
 
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
@@ -97,8 +116,8 @@ const Banner = () => {
       {details ? (
         <div className="pop-up">
           <ReactPlayer
-            playing={true}
-            muted={true}
+            playing={play}
+            muted={mute}
             className="pop-up__react-player"
             url="https://www.youtube.com/watch?v=lFDVL1e8WM4"
             width="100%"
@@ -112,10 +131,20 @@ const Banner = () => {
             <img className="pop-up__content__title" src={title?.url} alt="" />
             <div className="pop-up__content__buttons">
               <div className="button-container">
-                <button>Afspelen</button>
+                <button onClick={() => setPlay(!play)}>
+                  {play ? <BsFillPauseFill /> : <BsPlayFill />}
+                  {play ? 'Pauzeren' : 'Afspelen'}
+                </button>
+                <AiOutlineCheck />
+                <VscThumbsup />
+                <VscThumbsdown />
               </div>
               <div className="button-mute">
-                <button>MUTE</button>
+                {mute ? (
+                  <VscMute onClick={() => setMute(!mute)} />
+                ) : (
+                  <VscUnmute onClick={() => setMute(!mute)} />
+                )}{' '}
               </div>
             </div>
 
@@ -142,7 +171,15 @@ const Banner = () => {
               <div className="description">
                 <p>{movie[0]?.overview}</p>
               </div>
-              <div className="genres">genre: Action</div>
+              <div className="genres">
+                <p className="gray">Genres: &nbsp;</p>
+                {genre.map((genre) => (
+                  <p key={genre.id}>{`${genre.name},`}&nbsp; </p>
+                ))}
+                <p className="company">
+                  <span className="gray">Company: </span> {company}
+                </p>
+              </div>
             </div>
           </div>
         </div>
