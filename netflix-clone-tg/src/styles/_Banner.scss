@@ -40,6 +40,9 @@
       margin-top: 1%;
       // height: 30vh;
     }
+    &__slider::-webkit-scrollbar {
+      display: none;
+    }
 
     &__type {
       margin-top: 2%;

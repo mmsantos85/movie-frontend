@@ -56,6 +56,10 @@
   margin-top: 1%;
 }
 
+.banner__contents__slider::-webkit-scrollbar {
+  display: none;
+}
+
 .banner__contents__type {
   margin-top: 2%;
   font-size: 2rem;
@@ -586,13 +590,13 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 50%;
+    width: 40%;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    left: 0;
+    left: 10%;
     top: 2.5%;
     text-decoration: none;
     list-style-type: none;
@@ -603,6 +607,9 @@
     display: -ms-flexbox;
     display: flex;
     width: 100%;
+  }
+  .nav__contents__icons svg {
+    font-size: 12px;
   }
   .nav__contents__ul {
     display: -webkit-box;
