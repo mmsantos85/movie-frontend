@@ -119,18 +119,15 @@
       display: flex;
       align-items: center;
       // flex-wrap: wrap;
-      border: red 1px solid;
 
       &__links {
         position: fixed;
         display: flex;
-        width: 50%;
+        width: 40%;
         // justify-content: space-between;
         align-items: center;
-
-        border: 2px yellow solid;
         flex-wrap: wrap;
-        left: 0;
+        left: 10%;
         top: 2.5%;
         text-decoration: none;
         list-style-type: none;
@@ -144,11 +141,13 @@
       &__icons {
         display: flex;
         width: 100%;
+        svg {
+          font-size: 12px;
+        }
       }
       &__ul {
         display: flex;
         flex-direction: row;
-        border: blue 2px solid;
         margin-right: 5%;
         align-items: center;
         margin-right: 85px;
