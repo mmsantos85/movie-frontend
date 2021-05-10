@@ -1,12 +1,13 @@
 import React from 'react';
 
-function Test({ imageUrl }) {
+function Test({ imageUrl, num }) {
   return (
-    <div>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <p style={{ color: 'white', fontSize: '5rem' }}>{num + 1}</p>
       <img
+        className="slider-image"
         src={`https://image.tmdb.org/t/p/original${imageUrl}`}
         alt=""
-        srcset=""
       />
     </div>
   );

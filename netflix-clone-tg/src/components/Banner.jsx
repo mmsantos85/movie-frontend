@@ -12,11 +12,13 @@ import {
 } from 'react-icons/vsc';
 import { BsPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMovieId, setMovieIdRedux } from '../feature/userSlice';
+import { selectMoviePopup, setMoviePopupRedux } from '../feature/userSlice';
+
 import Test from './Test';
 
 const Banner = () => {
   const dispatch = useDispatch();
+  const pop = useSelector(selectMoviePopup);
 
   const API_KEY = '00c655f5cf699862386184d892b7378f';
 
@@ -29,6 +31,7 @@ const Banner = () => {
   const [company, setCompany] = useState('');
   const [play, setPlay] = useState(true);
   const [mute, setMute] = useState(true);
+  const [close, setClose] = useState(true);
 
   // tijdelijke API call
   useEffect(() => {
@@ -42,7 +45,7 @@ const Banner = () => {
     fetchData();
   }, []);
 
-  // console.log(movie);
+  console.log(movie);
 
   useEffect(() => {
     async function fetchGenre() {
@@ -59,7 +62,7 @@ const Banner = () => {
       const movieTitle = await axios.get(
         `http://webservice.fanart.tv/v3/movies/460465?api_key=${API_KEY}`
       );
-      setTitle(movieTitle.data?.hdmovielogo[1]);
+      setTitle(movieTitle.data?.hdmovielogo[0]);
       return movieTitle;
     }
     fetchTitle();
@@ -68,6 +71,12 @@ const Banner = () => {
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + '...' : string;
   }
+
+  function closePopup() {
+    // setClose(!close);
+    dispatch(setMoviePopupRedux(!pop));
+  }
+
   return (
     <div>
       <header
@@ -100,7 +109,7 @@ const Banner = () => {
           <>
             <div className="banner__contents">
               {/* <h1 className="banner__contents__title">{movie.original_title}</h1> */}
-              <img src={title?.url} alt="" />
+              <img className="banner__contents__logo" src={title?.url} alt="" />
 
               <div className="banner__contents__buttons">
                 <button
@@ -109,10 +118,7 @@ const Banner = () => {
                 >
                   Afspelen
                 </button>
-                <button
-                  onClick={() => setDetails(true)}
-                  className="banner__button"
-                >
+                <button onClick={() => closePopup()} className="banner__button">
                   Meer informatie
                 </button>
               </div>
@@ -120,78 +126,94 @@ const Banner = () => {
                 {truncate(`${movie[0]?.overview}`, 150)}
               </h1>
             </div>
+
             <div className="banner--fadeBottom" />
           </>
         )}
 
-        {details ? (
-          <div className="pop-up">
-            <ReactPlayer
-              playing={play}
-              muted={mute}
-              className="pop-up__react-player"
-              url="https://www.youtube.com/watch?v=lFDVL1e8WM4"
-              width="100%"
-              height="100%"
-            />
-            <div className="pop-up__trailer"></div>
-            <span className="pop-up__close">
-              <AiFillCloseCircle onClick={() => setDetails(false)} />
-            </span>
-            <div className="pop-up__content">
-              <img className="pop-up__content__title" src={title?.url} alt="" />
-              <div className="pop-up__content__buttons">
-                <div className="button-container">
-                  <button onClick={() => setPlay(!play)}>
-                    {play ? <BsFillPauseFill /> : <BsPlayFill />}
-                    {play ? 'Pauzeren' : 'Afspelen'}
-                  </button>
-                  <AiOutlineCheck />
-                  <VscThumbsup />
-                  <VscThumbsdown />
+        {pop ? (
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              top: '0%',
+              zIndex: '2',
+            }}
+            onClick={() => closePopup()}
+          >
+            <div onClick={(e) => e.stopPropagation()} className={`pop-up`}>
+              <ReactPlayer
+                playing={play}
+                muted={mute}
+                className="pop-up__react-player"
+                url="https://www.youtube.com/watch?v=lFDVL1e8WM4"
+                width="100%"
+                height="100%"
+              />
+              <div className="pop-up__trailer"></div>
+              <span className="pop-up__close">
+                <AiFillCloseCircle onClick={() => closePopup()} />
+              </span>
+              <div className="pop-up__content">
+                <img
+                  className="pop-up__content__title"
+                  src={title?.url}
+                  alt=""
+                />
+                <div className="pop-up__content__buttons">
+                  <div className="button-container">
+                    <button onClick={() => setPlay(!play)}>
+                      {play ? <BsFillPauseFill /> : <BsPlayFill />}
+                      {play ? 'Pauzeren' : 'Afspelen'}
+                    </button>
+                    <AiOutlineCheck />
+                    <VscThumbsup />
+                    <VscThumbsdown />
+                  </div>
+                  <div className="button-mute">
+                    {mute ? (
+                      <VscMute onClick={() => setMute(!mute)} />
+                    ) : (
+                      <VscUnmute onClick={() => setMute(!mute)} />
+                    )}{' '}
+                  </div>
                 </div>
-                <div className="button-mute">
-                  {mute ? (
-                    <VscMute onClick={() => setMute(!mute)} />
-                  ) : (
-                    <VscUnmute onClick={() => setMute(!mute)} />
-                  )}{' '}
-                </div>
-              </div>
 
-              <div className="pop-up__content__description">
-                <p className="release">
-                  <span className="average">
-                    Cijfer {movie[0].vote_average}
-                  </span>
-                  {` ${movie[0].release_date}`}
-                </p>
-
-                <img
-                  src="https://cdn.worldvectorlogo.com/logos/kijkwijzer.svg"
-                  alt=""
-                />
-                <img
-                  src="https://cdn.worldvectorlogo.com/logos/kijkwijzer-geweld.svg"
-                  alt=""
-                />
-                <img
-                  src="https://cdn.worldvectorlogo.com/logos/kijkwijzer-angst.svg"
-                  alt=""
-                />
-              </div>
-              <div className="pop-up__content__container">
-                <div className="description">
-                  <p>{movie[0]?.overview}</p>
-                </div>
-                <div className="genres">
-                  <p className="gray">Genres: &nbsp;</p>
-                  {genre.map((genre) => (
-                    <p key={genre.id}>{`${genre.name},`}&nbsp; </p>
-                  ))}
-                  <p className="company">
-                    <span className="gray">Company: </span> {company}
+                <div className="pop-up__content__description">
+                  <p className="release">
+                    <span className="average">
+                      Cijfer {movie[0].vote_average}
+                    </span>
+                    {` ${movie[0].release_date}`}
                   </p>
+
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/kijkwijzer.svg"
+                    alt=""
+                  />
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/kijkwijzer-geweld.svg"
+                    alt=""
+                  />
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/kijkwijzer-angst.svg"
+                    alt=""
+                  />
+                </div>
+                <div className="pop-up__content__container">
+                  <div className="description">
+                    <p>{movie[0]?.overview}</p>
+                  </div>
+                  <div className="genres">
+                    <p className="gray">Genres: &nbsp;</p>
+                    {genre.map((genre) => (
+                      <p key={genre.id}>{`${genre.name},`}&nbsp; </p>
+                    ))}
+                    <p className="company">
+                      <span className="gray">Company: </span> {company}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -201,11 +223,11 @@ const Banner = () => {
         )}
       </header>
       {/* <div className=""></div> */}
-      <h2 className="banner__contents__type">Originals</h2>
+      <h2 className="banner__contents__type">Top 20</h2>
 
       <div className="banner__contents__slider">
-        {movie.map((image) => (
-          <Test imageUrl={`${image?.backdrop_path}`} />
+        {movie.map((image, index) => (
+          <Test key={image.id} imageUrl={`${image?.poster_path}`} num={index} />
         ))}
       </div>
     </div>
