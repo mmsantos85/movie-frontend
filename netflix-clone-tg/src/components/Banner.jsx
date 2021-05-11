@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectMoviePopup, setMoviePopupRedux } from '../feature/userSlice';
 
 import Test from './Test';
+import Row from './Row';
+import useFetch from '../custom hooks/useFetch';
+import requests from '../Requests';
 
 const Banner = () => {
   const dispatch = useDispatch();
@@ -24,32 +27,26 @@ const Banner = () => {
 
   const [movie, setMovie] = useState([]);
   const [active, setActive] = useState(false);
-  const [details, setDetails] = useState(false);
   const [title, setTitle] = useState('');
   const [movieId, setMovieId] = useState(null);
   const [genre, setGenre] = useState('');
   const [company, setCompany] = useState('');
   const [play, setPlay] = useState(true);
   const [mute, setMute] = useState(true);
-  const [close, setClose] = useState(true);
 
   // tijdelijke API call
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('/Discover');
+      const request = await axios.get(requests.fetchTrending);
       setMovie(request.data?.results);
-      // setMovieId(request.data?.results[0]);
-      // dispatch(setMovieIdRedux({ movies: request.data }));
       return request;
     }
     fetchData();
   }, []);
 
-  console.log(movie);
-
   useEffect(() => {
     async function fetchGenre() {
-      const genre = await axios.get(`/Movie/460465`);
+      const genre = await axios.get(`${requests.fetchGenre}`);
       setGenre(genre.data?.genres);
       setCompany(genre.data.production_companies[0].name);
       return genre;
@@ -73,9 +70,14 @@ const Banner = () => {
   }
 
   function closePopup() {
-    // setClose(!close);
     dispatch(setMoviePopupRedux(!pop));
   }
+
+  const Eighties = useFetch(requests.fetchEightiesMovies);
+  const Nineties = useFetch(requests.fetchNinetiesMovies);
+  const Zeroes = useFetch(requests.fetchZeroesMovies);
+  const Disney = useFetch(requests.fetchEightiesMovies);
+  const Actor = useFetch(requests.fetchActorMovies);
 
   return (
     <div>
@@ -223,12 +225,22 @@ const Banner = () => {
         )}
       </header>
       {/* <div className=""></div> */}
-      <h2 className="banner__contents__type">Top 20</h2>
+      <h2 className="banner__contents__type" style={{ marginLeft: '3%' }}>
+        Top 20
+      </h2>
 
       <div className="banner__contents__slider">
         {movie.map((image, index) => (
           <Test key={image.id} imageUrl={`${image?.poster_path}`} num={index} />
         ))}
+      </div>
+
+      <div>
+        <Row genre={Eighties} type="80's" />
+        <Row genre={Nineties} type="90's" />
+        <Row genre={Zeroes} type="00's" />
+        <Row genre={Disney} type="Disney" />
+        <Row genre={Actor} type="Acteur" />
       </div>
     </div>
   );
