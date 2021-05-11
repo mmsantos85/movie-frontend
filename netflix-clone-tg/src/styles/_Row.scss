@@ -1,0 +1,30 @@
+.container {
+  margin-left: 3%;
+
+  h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3%;
+  }
+
+  .row {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    img {
+      object-fit: contain;
+      width: 14rem;
+      margin-right: 10px;
+      transition: transform 450ms;
+    }
+    img:hover {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+  }
+  .row::-webkit-scrollbar {
+    display: none;
+  }
+}
