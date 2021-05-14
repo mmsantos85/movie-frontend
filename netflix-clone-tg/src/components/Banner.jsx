@@ -76,7 +76,7 @@ const Banner = () => {
   const Eighties = useFetch(requests.fetchEightiesMovies);
   const Nineties = useFetch(requests.fetchNinetiesMovies);
   const Zeroes = useFetch(requests.fetchZeroesMovies);
-  const Disney = useFetch(requests.fetchEightiesMovies);
+  const Disney = useFetch(requests.fetchDisneyMovies);
   const Actor = useFetch(requests.fetchActorMovies);
 
   return (
