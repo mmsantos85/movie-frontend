@@ -54,6 +54,7 @@
   overflow-y: hidden;
   overflow-x: scroll;
   margin-top: 1%;
+  margin-left: 3%;
 }
 
 .banner__contents__slider::-webkit-scrollbar {
@@ -172,7 +173,7 @@
   background-color: #111;
   padding-left: 5%;
   padding-bottom: 10px;
-  margin-top: 6.5%;
+  margin-top: 7.5%;
 }
 
 .banner .pop-up__content__title {
@@ -304,6 +305,103 @@
 .banner .pop-up__content__container .genres .gray {
   color: #868686;
   font-size: 14px;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner .pop-up {
+    width: 550px;
+  }
+  .banner .pop-up__content {
+    margin-top: 10.5%;
+    padding-bottom: 10%;
+  }
+  .banner .pop-up__content__title {
+    top: 75%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .banner .pop-up {
+    width: 350px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .banner .pop-up__close > svg {
+    left: 90%;
+  }
+  .banner .pop-up__content {
+    margin-top: 10.5%;
+    padding-bottom: 10%;
+    z-index: 2;
+  }
+  .banner .pop-up__content__title {
+    top: 75%;
+  }
+  .banner .pop-up__content__trailer {
+    display: none;
+  }
+  .banner .pop-up__content__title {
+    display: none;
+  }
+  .banner .pop-up__content__buttons {
+    top: 45%;
+  }
+  .banner .pop-up__content__buttons .button-mute {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .banner .pop-up__content__buttons .button-mute > svg {
+    color: white;
+    font-size: 35px;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .banner .pop-up__content__buttons .button-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .banner .pop-up__content__buttons .button-container svg {
+    font-size: 35px;
+  }
+  .banner .pop-up__content__buttons .button-container > button {
+    padding: 8px 4px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 300;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .banner .pop-up__content__buttons .button-container > button svg {
+    font-size: 20px;
+    margin-right: 1px;
+  }
+  .banner .pop-up__content__container p {
+    font-size: 14px;
+  }
 }
 
 .footer {
@@ -694,10 +792,57 @@
   }
 }
 
+.text-rank {
+  -webkit-text-stroke: 4px gray;
+  color: black;
+  font-size: 15rem;
+  font-weight: bold;
+  letter-spacing: -20px;
+}
+
 .slider-image {
   -o-object-fit: contain;
      object-fit: contain;
-  width: 10rem;
+  width: 8rem;
+  margin-right: 10px;
+  -webkit-transition: -webkit-transform 450ms;
+  transition: -webkit-transform 450ms;
+  transition: transform 450ms;
+  transition: transform 450ms, -webkit-transform 450ms;
+  z-index: 1;
+  margin-left: -10px;
+  margin-bottom: -32px;
+}
+
+.slider-image:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+  opacity: 1;
+}
+
+.container {
+  margin-left: 3%;
+}
+
+.container h2 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 3%;
+}
+
+.container .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.container .row img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 14rem;
   margin-right: 10px;
   -webkit-transition: -webkit-transform 450ms;
   transition: -webkit-transform 450ms;
@@ -705,9 +850,13 @@
   transition: transform 450ms, -webkit-transform 450ms;
 }
 
-.slider-image:hover {
+.container .row img:hover {
   -webkit-transform: scale(1.08);
           transform: scale(1.08);
   opacity: 1;
+}
+
+.container .row::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import "../style.css";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { GoSearch } from "react-icons/go";
-import { IoMdNotifications, IoMdArrowDropdown } from "react-icons/io";
+import React, { useState, useEffect } from 'react';
+import '../style.css';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { GoSearch } from 'react-icons/go';
+import { IoMdNotifications, IoMdArrowDropdown } from 'react-icons/io';
 
 // Nav On Scroll
 function Nav() {
@@ -19,29 +19,29 @@ function Nav() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", transitionNavBar);
-    return () => window.removeEventListener("scroll", transitionNavBar);
+    window.addEventListener('scroll', transitionNavBar);
+    return () => window.removeEventListener('scroll', transitionNavBar);
   }, []);
 
   const [active, setActive] = useState(false);
 
   return (
-    <div className={`nav ${show && "nav__black"}`}>
+    <div className={`nav ${show && 'nav__black'}`}>
       <div className="nav__contents">
         <img
-          onClick={() => history.push("/")}
+          onClick={() => history.push('/')}
           className="nav__contents__logo"
           src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
           alt=""
         />
         <ul className="nav__contents__links">
           <li>
-            {" "}
-            <Link to="/">Home</Link>
+            {' '}
+            <Link to="/">Discover</Link>
           </li>
 
           <li>
-            {" "}
+            {' '}
             <Link to="/film">Films</Link>
           </li>
         </ul>
