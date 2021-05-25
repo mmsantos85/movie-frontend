@@ -14,13 +14,13 @@ function MoviePage() {
   const Adventure = useFetch(requests.fetchAdventureMovies);
   return (
     <div className="banner__contents__genres">
-      <Row genre={Comedy} type="Komedie" />
-      <Row genre={Action} type="Actie" />
-      <Row genre={Thriller} type="Thriller" />
-      <Row genre={Family} type="Familie" />
-      <Row genre={Fantasy} type="Fantasie" />
-      <Row genre={Crime} type="Misdaad" />
-      <Row genre={Adventure} type="Avontuur" />
+      <Row genre={Comedy} type="Komedie" id="1" />
+      <Row genre={Action} type="Actie" id="2" />
+      <Row genre={Thriller} type="Thriller" id="3" />
+      <Row genre={Family} type="Familie" id="4" />
+      <Row genre={Fantasy} type="Fantasie" id="5" />
+      <Row genre={Crime} type="Misdaad" id="6" />
+      <Row genre={Adventure} type="Avontuur" id="7" />
     </div>
   );
 }
