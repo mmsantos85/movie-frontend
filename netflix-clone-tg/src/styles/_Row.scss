@@ -8,7 +8,16 @@
     margin-top: 3%;
   }
 
+  button {
+    background-color: #111;
+    color: white;
+    border: none;
+    margin-bottom: 0.5%;
+    cursor: pointer;
+  }
+
   .row {
+    scroll-behavior: smooth;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -25,6 +34,20 @@
     }
   }
   .row::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+  }
+
+  .row::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  }
+
+  .row::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(20, 7, 51, 0.082);
+    box-shadow: inset 0 0 6px rgba(20, 7, 51, 0.082);
+    background-color: rgba(252, 249, 249, 0.212);
+    border-radius: 15px;
   }
 }
